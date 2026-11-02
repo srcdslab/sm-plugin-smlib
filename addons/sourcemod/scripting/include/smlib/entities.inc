@@ -1246,7 +1246,7 @@ stock int Entity_SetHealth(int entity, int value, bool ignoreMax=false, bool kil
 
 	SetEntProp(entity, Prop_Data, "m_iHealth", health);
 
-	if (health <= 0) {
+	if (kill && health <= 0) {
 		Entity_Kill(entity);
 	}
 
