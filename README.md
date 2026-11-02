@@ -1,5 +1,5 @@
 # smlib
-[![Build Status](https://travis-ci.org/bcserv/smlib.svg)](https://travis-ci.org/bcserv/smlib)
+[![CI](https://github.com/srcdslab/sm-plugin-smlib/actions/workflows/ci.yml/badge.svg)](https://github.com/srcdslab/sm-plugin-smlib/actions/workflows/ci.yml)
 
 Function Stock Library for Sourcemod with over 350 functions.
 
