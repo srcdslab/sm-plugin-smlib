@@ -183,7 +183,11 @@ stock int Entity_GetName(int entity, char[] buffer, int size)
 stock bool Entity_SetName(int entity, const char[] name, any ...)
 {
 	char format[128];
+#if defined __sourcepawn2
+	FormatEx(format, sizeof(format), name, ...);
+#else
 	VFormat(format, sizeof(format), name, 3);
+#endif
 
 	return DispatchKeyValue(entity, "targetname", format);
 }
@@ -238,7 +242,11 @@ stock int Entity_GetTargetName(int entity, char[] buffer, int size)
 stock bool Entity_SetTargetName(int entity, const char[] name, any ...)
 {
 	char format[128];
+#if defined __sourcepawn2
+	FormatEx(format, sizeof(format), name, ...);
+#else
 	VFormat(format, sizeof(format), name, 3);
+#endif
 
 	return DispatchKeyValue(entity, "target", format);
 }
@@ -266,7 +274,11 @@ stock int Entity_GetGlobalName(int entity, char[] buffer, int size)
 stock bool Entity_SetGlobalName(int entity, const char[] name, any ...)
 {
 	char format[128];
+#if defined __sourcepawn2
+	FormatEx(format, sizeof(format), name, ...);
+#else
 	VFormat(format, sizeof(format), name, 3);
+#endif
 
 	return DispatchKeyValue(entity, "globalname", format);
 }
@@ -294,7 +306,11 @@ stock int Entity_GetParentName(int entity, char[] buffer, int size)
 stock bool Entity_SetParentName(int entity, const char[] name, any ...)
 {
 	char format[128];
+#if defined __sourcepawn2
+	FormatEx(format, sizeof(format), name, ...);
+#else
 	VFormat(format, sizeof(format), name, 3);
+#endif
 
 	return DispatchKeyValue(entity, "parentname", format);
 }
@@ -1246,7 +1262,7 @@ stock int Entity_SetHealth(int entity, int value, bool ignoreMax=false, bool kil
 
 	SetEntProp(entity, Prop_Data, "m_iHealth", health);
 
-	if (kill && health <= 0) {
+	if (health <= 0 && kill) {
 		Entity_Kill(entity);
 	}
 

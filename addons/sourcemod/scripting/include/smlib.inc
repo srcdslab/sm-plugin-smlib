@@ -3,7 +3,7 @@
 #endif
 #define _smlib_included
 
-#define SMLIB_VERSION "0.9.8"
+#define SMLIB_VERSION "0.9.9"
 
 #include <smlib/general>
 
