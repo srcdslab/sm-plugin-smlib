@@ -1695,7 +1695,11 @@ stock bool Client_PrintHintText(int client, const char[] format, any ...)
 	char buffer[254];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 3);
+#endif
 
 
 	if (GetFeatureStatus(FeatureType_Native, "GetUserMessageType") == FeatureStatus_Available
@@ -1732,7 +1736,11 @@ stock void Client_PrintHintTextToAll(const char[] format, any ...)
 		}
 
 		SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+		FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 		VFormat(buffer, sizeof(buffer), format, 2);
+#endif
 		Client_PrintHintText(client, buffer);
 	}
 }
@@ -1758,7 +1766,11 @@ stock bool Client_PrintKeyHintText(int client, const char[] format, any ...)
 	char buffer[254];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 3);
+#endif
 
 	if (GetFeatureStatus(FeatureType_Native, "GetUserMessageType") == FeatureStatus_Available
 		&& GetUserMessageType() == UM_Protobuf) {
@@ -1795,7 +1807,11 @@ stock void Client_PrintKeyHintTextToAll(const char[] format, any ...)
 		}
 
 		SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+		FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 		VFormat(buffer, sizeof(buffer), format, 2);
+#endif
 		Client_PrintKeyHintText(client, buffer);
 	}
 }
@@ -1894,7 +1910,11 @@ stock void Client_PrintToChat(int client, bool isChat, const char[] format, any 
 		buffer2[253];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 4);
+#endif
 	int subject = Color_ParseChatText(buffer, buffer2, sizeof(buffer2));
 
 	Client_PrintToChatRaw(client, buffer2, subject, isChat);
@@ -1949,7 +1969,11 @@ stock void Client_PrintToChatAll(bool isChat, const char[] format, any ...)
 
 		if (language != lastLanguage) {
 			SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+			FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 			VFormat(buffer, sizeof(buffer), format, 3);
+#endif
 			subject = Color_ParseChatText(buffer, buffer2, sizeof(buffer2));
 
 			lastLanguage = language;
@@ -2000,7 +2024,11 @@ stock void Client_PrintToChatEx(int[] clients, int numClients, bool isChat, cons
 
 		if (language != lastLanguage) {
 			SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+			FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 			VFormat(buffer, sizeof(buffer), format, 5);
+#endif
 			subject = Color_ParseChatText(buffer, buffer2, sizeof(buffer2));
 
 			lastLanguage = language;
@@ -2034,7 +2062,11 @@ stock void Client_PrintToConsole(int client, const char[] format, any ...)
 	char buffer[512];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 3);
+#endif
 
 	Client_Print(client, ClientHudPrint_Console, buffer);
 }
@@ -2055,7 +2087,11 @@ stock void Client_Print(int client, ClientHudPrint destination, const char[] for
 	char buffer[512], buffer2[254];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 4);
+#endif
 
 	int subject = Color_ParseChatText(buffer, buffer2, sizeof(buffer2));
 
@@ -2114,7 +2150,11 @@ stock void Client_Reply(int client, const char[] format, any ...)
 	char buffer[255];
 
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 3);
+#endif
 
 	if (GetCmdReplySource() == SM_REPLY_TO_CONSOLE) {
 		Client_PrintToConsole(client, buffer);
@@ -2953,7 +2993,11 @@ stock bool Client_PrintToTop(int client, int r=255, int g=255, int b=255, int a=
 {
 	char buffer[150];
 	SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+	FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 	VFormat(buffer, sizeof(buffer), format, 8);
+#endif
 
 	return Client_PrintToTopRaw(client, r, g, b, a, duration, buffer);
 }
@@ -2993,7 +3037,11 @@ stock void Client_PrintToTopAll(int r=255, int g=255, int b=255, int a=255, floa
 
 		if (language != lastLanguage) {
 			SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+			FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 			VFormat(buffer, sizeof(buffer), format, 7);
+#endif
 
 			lastLanguage = language;
 		}
@@ -3042,7 +3090,11 @@ stock void Client_PrintToTopEx(int[] clients, int numClients, int r=255, int g=2
 
 		if (language != lastLanguage) {
 			SetGlobalTransTarget(client);
+#if defined __sourcepawn2
+			FormatEx(buffer, sizeof(buffer), format, ...);
+#else
 			VFormat(buffer, sizeof(buffer), format, 9);
+#endif
 
 			lastLanguage = language;
 		}

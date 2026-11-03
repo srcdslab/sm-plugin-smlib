@@ -26,7 +26,11 @@ stock void SQL_TQueryF(Database database, SQLTCallback callback, any data, DBPri
 	}
 
 	char query[16384];
+#if defined __sourcepawn2
+	FormatEx(query, sizeof(query), format, ...);
+#else
 	VFormat(query, sizeof(query), format, 6);
+#endif
 
 	SQL_TQuery(database, callback, query, data, priority);
 }
